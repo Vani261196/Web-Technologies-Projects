@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Shipping"
+    android:orientation="vertical">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp"
+        android:id="@+id/shipping_table">
+
+        <TableRow>
+
+            <ImageView
+                android:id="@+id/shipping_icon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/truck_delivery" />
+
+            <TextView
+                android:id="@+id/soldby"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:text="Sold By"
+                android:textStyle="bold" />
+
+            <TextView />
+
+
+        </TableRow>
+
+        <TableRow>
+
+            <ImageView
+
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="Store Name"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/store"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:textStyle="bold" />
+
+
+        </TableRow>
+
+        <TableRow>
+
+            <ImageView
+
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="Feedback Score"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/feedbackscore"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:textStyle="bold" />
+
+
+        </TableRow>
+
+        <TableRow>
+
+            <ImageView
+
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="Popularity"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/popularity"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:textStyle="bold" />
+
+
+        </TableRow>
+
+        <TableRow>
+
+            <ImageView
+
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="Feedback Star"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/feedbackstar"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:textStyle="bold" />
+
+
+        </TableRow>
+
+        <TableRow
+            android:layout_height="10dp"
+            android:paddingLeft="20dp">
+
+            <View
+                android:layout_width="300dp"
+                android:layout_height="2dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10sp"
+                android:layout_span="3"
+                android:background="#000000"
+                android:paddingBottom="10sp" />
+
+        </TableRow>
+
+
+        <TableRow>
+
+            <ImageView
+                android:id="@+id/ship_front"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/truck_delivery" />
+
+            <TextView
+                android:id="@+id/shipinfo"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:text="Shipping Info"
+                android:textStyle="bold" />
+
+            <TextView />
+
+
+        </TableRow>
+
+        <TableRow>
+
+            <ImageView
+
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="Shipping Cost" />
+
+            <TextView
+                android:id="@+id/shipcost"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp" />
+
+
+        </TableRow>
+
+        <TableRow>
+
+            <ImageView
+
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="Global Shipping" />
+
+            <TextView
+                android:id="@+id/globalship"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp" />
+
+
+        </TableRow>
+
+        <TableRow>
+
+            <ImageView
+
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="Handling Time" />
+
+            <TextView
+                android:id="@+id/handlingtime"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp" />
+
+
+        </TableRow>
+
+        <TableRow>
+
+            <ImageView
+
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="Condition" />
+
+            <TextView
+                android:id="@+id/condition"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp" />
+
+
+        </TableRow>
+
+
+
+    </TableLayout>
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/hello_blank_fragment" />
+
+</LinearLayout>

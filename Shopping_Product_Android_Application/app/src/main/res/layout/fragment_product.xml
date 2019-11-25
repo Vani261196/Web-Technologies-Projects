@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Product">
+
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:id="@+id/viewpage">
+
+    </android.support.v4.view.ViewPager>
+
+    <TextView
+        android:id="@+id/title_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"/>
+    <TextView
+        android:id="@+id/price_shipping_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/proddetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:layout_width="300dp"
+        android:layout_height="2dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10sp"
+        android:paddingBottom="10sp"
+        android:background="#d3d3d3" />
+
+    <TextView
+        android:id="@+id/Highlights"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Highlights"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/Price_only"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/brand"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <View
+        android:layout_width="300dp"
+        android:layout_height="2dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10sp"
+        android:paddingBottom="10sp"
+        android:background="#d3d3d3" />
+
+    <TextView
+        android:id="@+id/Specifications"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Specifications"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/specs"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+
+
+</LinearLayout>
+</ScrollView>
