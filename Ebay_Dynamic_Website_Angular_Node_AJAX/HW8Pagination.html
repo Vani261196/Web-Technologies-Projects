@@ -1,0 +1,1234 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Homeword 8</title>
+
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
+      
+
+<!--
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>-->
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap-tpls.min.js"></script>
+
+
+<script src="angularpagination.js"></script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-svg-round-progressbar/0.4.8/roundProgress.min.js"></script>
+<script>
+	window.fbAsyncInit = function() {
+	        FB.init({appId: '602749993522223', status: true, cookie: true,
+	        xfbml: true, version: 'v2.10'});
+    	};
+</script>
+
+
+
+<style type="text/css">
+
+		.table tr.active td {
+  background-color:#123456 !important;
+  color: white;
+}
+		
+		ul.pagination.justify-content-center>li.active>a{
+		  	color: white !important;
+		}
+		.pagination a:hover:not(.active) {background-color: #ddd;}
+
+		.pagination a:active {background-color: black;}
+	
+	.ProductSearch
+	{
+		color: white;
+		font-family: Arial;
+		display: inline-block;
+		font-size: 24px; 
+	}
+
+	@media screen and (max-width: 800px) {
+
+	
+
+		.nav-item>a{
+			font-size: 5px;
+		}
+
+	}
+
+	div
+	{
+		color:white;
+
+	}
+	.btn-dark
+	{
+		color:white;
+		background-color: black;
+	}
+	.btn-light
+	{
+		color: black;
+		background-color: white;
+	}
+	.yellow
+	{
+		color: rgb(218, 165, 32);
+	}
+
+.gfg{
+
+	border-collapse: separate;
+	border-spacing: 0 10px;
+}
+
+
+.required-field::after {
+    content: "*";
+    color: red;
+}
+
+.pagination a {
+		  color: black;
+		  float: left;
+		  padding: 8px 16px;
+		  text-decoration: none;
+		}
+
+i.material-icons 
+{
+  top: -1px;
+  vertical-align: middle;
+  position: relative;
+}
+
+.border-dark
+{
+	border-width: 5px;
+}
+.material-icons.md-green { color: rgba(63, 195, 128, 1); }
+.material-icons.md-red { color: rgba(242, 38, 19, 1); }
+
+.error 
+{
+	background-color: rgb(255,213,0) ; 
+}
+
+
+.progress-wrapper{
+    position: relative;
+}
+
+.progress-wrapper .text{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    text-align: center;
+   
+    z-index: 1;
+}
+
+ul.pagination.justify-content-center>li.active{
+			background-color: rgb(0,0,0) ;
+		  	color: white !important;
+		}
+	
+
+</style>
+</head>
+<body ng-app = "myApp" ng-init="" ng-controller="myBodyController">
+
+	<div class="container bg-dark" >
+		<br>
+		<div class="row justify-content-center">
+
+		<h1 class="ProductSearch justify-content-center" style="margin: 0 auto;">Product Search</h1>
+		</div>
+		<br><br>
+
+<!---------------------------------------------------------------------Keyword---------------------------------------->	
+
+	<form class="form-horizontal" action="" name="form">
+		
+		<div class="form-group row">
+			<label class="col-sm-2 offset-md-3 col-form-label required-field" for="Keyword" >Keyword</label>
+
+			<div class="col-lg-4">
+				
+				<input  class="form-control" id="Keyword" name="Keyword"  ng-model="Keyword" placeholder="Enter Product Name (eg: Iphone 8)" >
+
+				<span style="color:red" ng-show="form.Keyword.$touched && !form.Keyword.$dirty">Please enter a keyword</span>
+				
+				
+			</div>
+
+		</div>
+		<br>
+
+<!---------------------------------------------------------------------------------------------------------------------------->	
+
+<!---------------------------------------------------------------------Category------------------------------------------------>	
+
+	<div class="form-group row">
+		<label class="col-sm-2 offset-md-3 col-form-label" for="Category">Category</label>
+
+		
+		<div class="form-group col-lg-3">
+			<select class="form-control" ng-model = "Category" name="Category">
+
+					<option value="default">All Categories</option>
+					<option value="Art"> Art</option>
+					<option value="Baby"> Baby</option>
+					<option value="Books"> Books</option>
+					<option value="Clothing"> Clothing</option>
+					<option value="ShoesAcceessories"> Shoes & Accessories</option>
+					<option value="Computers/Tablets"> Computer/Tablets</option>
+					<option value="Networking"> Networking</option>
+					<option value="HealthBeauty"> Health & Beauty</option>
+					<option value="Music">Music</option>
+					<option value="VideoGamesConsoles"> Video Games & Consoles</option>
+					
+
+			</select>
+
+			
+  			
+  			
+		</div>
+	
+
+</div>
+<br>
+
+<!------------------------------------------------------------------------------------------------------------------------------->	
+
+<!---------------------------------------------------------------------Condition------------------------------------------------->	
+
+
+		<div class="row">
+
+			<label class="col-form-label col-lg-2 offset-md-3" for="Condition">Condition</label>
+
+			<div class="form-group col-lg-6  ">
+
+			<div class="form-check form-check-inline">
+			<input type="checkbox" ng-model="condition1" name="condition1" value="New">
+			<label class="form-check-label" for="condition1"> New</label>
+			</div>
+
+			<div class="form-check form-check-inline">
+			<input type="checkbox" ng-model="condition2" name="condition2" value="Used">
+			<label class="form-check-label" for="condition2"> Used</label>
+			</div>
+			<div class="form-check form-check-inline">
+			<input type="checkbox" ng-model="condition3" name="condition3" value="Unspecified">
+			<label class="form-check-label" for="condition3"> Unspecified</label>
+			</div>
+			
+		</div>
+
+		</div>
+		<br>
+
+
+
+	
+
+
+		
+
+
+
+<!---------------------------------------------------------------------------------------------------------------------------------->	
+
+<!---------------------------------------------------------------------Shipping----------------------------------------------------->	
+
+
+
+		
+	<div class="row">
+		<label class="control-label col-lg-2 offset-md-3" for="Shipping">Shipping</label>
+	<div class="form-group col-lg-6  ">
+
+		<div class="form-check form-check-inline">
+			<input type="checkbox" ng-model="local" name="local" value="Local" id="local">
+			<label class="form-check-label" for="local"> Local Shipping</label>
+		</div>
+		<div class="form-check form-check-inline">
+			<input type="checkbox" ng-model="free" name="free" value="Free" id="free">
+			<label class="form-check-label" for="free"> Free Shipping</label>
+		</div>
+
+	</div>
+	</div>
+	<br>
+
+
+<!------------------------------------------------------------------------------------------------------------------------------------>	
+		
+
+<!---------------------------------------------------------------------Distance(miles)------------------------------------------------->
+		
+		
+		<div class="form-group row">
+			<label class="col-sm-2 offset-md-3 col-form-label" for="miles" >Distance(miles)</label>
+
+			<div class="col-lg-3">
+				
+				<input  class="form-control" id="miles" name="miles"  ng-model="miles" placeholder="10">
+
+				
+			</div>
+		</div>
+		<br>
+
+			
+
+
+<div class="form-group row">
+			<div class="col-lg-2 offset-md-3">
+				
+				<label class="col-form-label required-field" for="Miles">From </label>
+
+
+			</div>
+
+			<div class=" col-lg-4 ">
+
+				<div class="form-check">
+
+
+				<input type="radio" name="distance" id="distance1" ng-value="'here'"  ng-model = "distance" class="form-check-input"  onclick = "deactivate()">  <label class="form-check-label" for="gridRadios1">
+            Current Location
+          </label>
+				
+          		</div>
+
+          		<div class="form-check">
+				
+				<input type="radio" name="distance" id="distance2" ng-value="'not_here'" ng-model = "distance"  class="form-check-input" onclick="activate()"> Other. Please Specify the zip code .
+
+				</div>
+
+			
+				
+				
+
+				
+
+				<!--<md-autocomplete md-input-name="autoField" md-no-cache="true" md-min-length="3" md-max-length="5" md-selected-item="user.zip" md-search-text="searchText" md-items="item in getMatches(searchText)" md-item-text="item">
+              
+                <span md-highlight-text="searchText">{{item}}</span>
+              
+            </md-autocomplete>-->
+
+            	<input  class="form-control" id="distance_text" name="distance_text"  ng-model="distance_text" disabled="disabled" ng-pattern = "/^\d{5}$/">
+
+				<span style="color: red" ng-show="form.distance_text.$touched && !form.distance_text.$dirty">Please enter a  zip code</span>
+				<span style="color: red" ng-show="form.distance_text.$touched && form.distance_text.$invalid">Please enter a valid 5-digit zip code</span>
+
+
+
+
+			</div>
+
+
+			<script type="text/javascript">
+				
+				document.getElementById('distance_text').disabled = true;
+				document.getElementById('distance1').checked = true;
+
+				function deactivate()
+				{
+					document.getElementById('distance_text').disabled = true;
+
+				}
+
+				function activate()
+				{
+					document.getElementById('distance_text').disabled = false ;
+
+				}
+
+
+
+
+			</script>
+
+
+<!----------------------------------------------------------------------------------------------------------------------------------------------->	
+
+
+<!---------------------------------------------------------------------Submit and Clear Buttons ------------------------------------------------->
+				
+			
+
+</div>	
+<br>
+
+
+		<div class="form-group">
+			<div class="row">
+				<div class="col-lg-2 offset-md-3">
+				<button type="button" class="btn btn-default" name= "search_button"  ng-model = "search_button"  ng-disabled = "Keyword == '' || distance == 'not_here' && !distance_text.length || (form.Keyword.$dirty && form.Keyword.$invalid ) || isDisabled" ng-click = "search()" >
+
+				
+				<i class="material-icons">search</i> Search</button>
+			</div>
+			<div class="col-lg-2">
+			<button type="reset" class="btn btn-default" ng-click="reset()">
+				<i class="material-icons">clear_all</i>Clear</button></div>
+			</div>	
+
+		</div>
+
+		<br>
+		<br>
+
+<!------------------------------------------------------------------------------------------------------------------------------------------------>	
+
+
+		
+	</form>
+
+
+
+
+
+
+
+</div>
+</div>
+<br>
+
+
+
+<!---------------------------------------------------- Results and Wish List ---------------------------------------------------------------------->
+
+<div class="container justify-content-center">
+
+	<div class="row justify-content-center">
+
+	<button name="result_button" class="btn btn-dark" name="result_button" id="result_button" ng-model="result_button" onclick="result_color_change()" ng-click="results()">Results</button>
+	<button name="wish_button" class="btn btn-light" name="wish_button" id="wish_button" ng-model="wish_button" onclick="wish_color_change()" ng-click="wishlist()">Wish List</button>
+	
+
+<script type="text/javascript">
+	
+function wish_color_change()
+{
+	var wish_button_details = document.getElementById("wish_button").classList;
+	var result_button_details = document.getElementById("result_button").classList;
+
+	if(wish_button_details.contains('btn-light'))
+	{
+		wish_button_details.remove("btn-light");
+		wish_button_details.add("btn-dark");
+
+		result_button_details.remove("btn-dark");
+		result_button_details.add("btn-light");
+	}
+
+}
+
+function result_color_change()
+{
+	var wish_button_details = document.getElementById("wish_button").classList;
+	var result_button_details = document.getElementById("result_button").classList;
+
+	
+		wish_button_details.remove("btn-dark");
+		wish_button_details.add("btn-light");
+
+		result_button_details.remove("btn-light");
+		result_button_details.add("btn-dark");
+
+}
+
+
+
+
+</script>
+
+</div>
+
+<br>
+</div>
+
+
+<!-------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+
+
+
+
+
+<!---------------------------------------------------- Progress and Details  ----------------------------------------------------------------->
+
+<div class="progress mt-5 container" ng-show="progress" >
+<div class="progress-bar progress-bar-striped progress-bar-animated active" style="width:50%"></div>
+</div>
+
+
+<div class="container">
+   <div class="row justify-content-end " style="margin-right: 14px;">
+      <button class="btn btn-light"  ng-show="show_details || show_wishlist" ng-click="DetailsTab()" ng-disabled = "details_disabled">Details<i class="material-icons">keyboard_arrow_right</i></button>
+    </div>
+</div>
+
+
+<!-------------------------------------------------------------------------------------------------------------------------------------------->
+
+<div class="alert alert-warning container" ng-if="table_data==undefined">No Records.</div>
+
+<!---------------------------------------------------------------Displaying table details------------------------------------------------------>
+<div class="container" ng-hide="!show_details" ng-if = "table_data!= undefined">
+
+<div name='display_results' id='display' ng-model = "display_results"   class="container" > 
+
+<table class="table table-stripped table-hover bg-dark table-responsive">
+	
+<tr>
+	
+<!--<td>#</td>
+<td>Images</td>
+<td>Title</td>
+<td>Price</td>
+<td>Shipping</td>
+<td>Zip</td>
+<td>Seller</td>
+<td>Wish List</td>-->
+
+ <th scope="col">#</th>
+      <th scope="col">Image</th>
+      <th scope="col">Title</th>
+      <th scope="col">Price</th>
+      <th scope="col">Shipping</th>
+      <th scope="col">Zip</th>
+      <th scope="col">Seller</th>
+      <th scope="col">Wish List</th>
+   
+
+</tr>
+
+<tr class="highlght" ng-repeat ="x in table_data.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))">
+
+	<td>{{$index+1}}</td>
+	<td width="150px" ng-if="x.galleryURL[0]!=undefined"><a href={{x.galleryURL[0]}} target="_blank"><img ng-src="{{x.galleryURL[0]}}" width="100%"></a></td>
+
+	<td ng-if="x.galleryURL[0]==undefined">N/A</td>
+	
+	<td ng-if="x.title[0]!=undefined"><a ng-href="#" ng-click="productDetailsTab(x);" data-original-title="{{x.title[0]}}" data-toggle="tooltip" data-placement="bottom" style="white-space: nowrap;"> {{ editTitle(x.title[0]) }}</a></td>
+
+	<td ng-if="x.title[0]==undefined"></td>
+
+
+	<td ng-if="x.sellingStatus[0].currentPrice[0].__value__!=undefined">${{x.sellingStatus[0].currentPrice[0].__value__}}</td>
+	<td ng-if="x.sellingStatus[0].currentPrice[0].__value__==undefined">N/A</td>
+
+	<td ng-if="x.shippingInfo[0].shippingServiceCost[0].__value__ == 0.0 && x.shippingInfo[0].shippingServiceCost[0].__value__ != undefined">Free Shipping</td>
+	<td ng-if="x.shippingInfo[0].shippingServiceCost[0].__value__ != 0.0 && x.shippingInfo[0].shippingServiceCost[0].__value__ != undefined">${{x.shippingInfo[0].shippingServiceCost[0].__value__}}</td>
+	<td ng-if="x.shippingInfo[0].shippingServiceCost[0].__value__ == undefined ">N/A</td>
+
+	
+	<td ng-if="x.postalCode[0]!=undefined">{{x.postalCode[0]}}</td>
+	<td ng-if="x.postalCode[0]==undefined">N/A</td>
+	<td ng-if="x.sellerInfo[0].sellerUserName[0]!=undefined">{{x.sellerInfo[0].sellerUserName[0] | uppercase}}</td>
+	<td ng-if="x.sellerInfo[0].sellerUserName[0]==undefined">N/A</td>
+
+
+	<td ng-if = "!checked_cart(x.itemId[0])">
+
+		<button class="btn btn-light" ng-click = "set_shop_cart(x);"><i class="material-icons">
+				add_shopping_cart
+						</i></button>
+
+					</td>
+
+
+
+	<td ng-if = "checked_cart(x.itemId[0])">
+
+		<button class="btn btn-light" ng-click = "set_shop_cart(x);"><i class="material-icons yellow">
+				remove_shopping_cart
+						</i></button>
+
+					</td>
+
+
+
+</tr>
+
+
+
+
+
+
+</table>
+
+
+
+
+
+</div>
+<div class="container">
+<div class="row justify-content-center">
+<pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" class="pagination-sm" items-per-page="itemsPerPage"></pagination></div>
+</div>
+
+
+</div>
+
+
+
+
+
+<!---------------------------------------------------------------------Product Details Tabs---------------------------------------------------------------->
+
+<div class="container " ng-show="products_show">
+
+<!---------------------------------------------------facebook share, cart sign and list------------------------------------------------------>
+	
+	<h3 class="d-flex justify-content-center mt-3 " style="color: black; text-align: center;">{{prodtitle}}</h3><br>
+
+	<div class="row d-flex container">
+	<button class="btn btn-light mr-auto p-2" ng-click="list();"><i class="material-icons">keyboard_arrow_left</i>List</button>
+	<a class="d-flex justify-content-end" ng-click="facebooktab()"><img src="http://csci571.com/hw/hw8/Images/facebook.png" height=40 width=50></a>
+
+		<span ng-if = "!checked_cart(dataItem.itemId[0])"><button class="btn " ng-click = "set_shop_cart(dataItem);" style="heigth:50 ;width:50;"><i class="material-icons" >
+				add_shopping_cart
+						</i></button></span>
+
+			<span ng-if = "checked_cart(dataItem.itemId[0])"><button class="btn" ng-click = "set_shop_cart(dataItem);" ng-if = "checked_cart(dataItem.itemId[0])"><i class="material-icons yellow">
+				remove_shopping_cart
+						</i></button></span>
+</div>
+
+
+<!---------------------------------------------------------------------------------------------------------------------------------------------->
+	<br>
+
+	<ul class="nav nav-pills  justify-content-end " id="myTab" role="tablist">
+  <li class="nav-item bg-dark">
+    <a class="nav-link active " id="home-tab" data-toggle="tab" href="#Product" role="tab" aria-controls="Product" aria-selected="true">Product</a>
+  </li>
+  <li class="nav-item bg-dark">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#Photos" role="tab" aria-controls="photos" aria-selected="false" ng-click="photos_extraction(productdata)">Photos</a>
+  </li>
+  <li class="nav-item bg-dark">
+    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#Shipping" role="tab" aria-controls="shipping" aria-selected="false">Shipping</a>
+  </li>
+  <li class="nav-item bg-dark">
+    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#Seller" role="tab" aria-controls="seller" aria-selected="false">Seller</a>
+  </li>
+  <li class="nav-item bg-dark">
+    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#Similar_prods" role="tab" aria-controls="simprods" aria-selected="false">Similar Products</a>
+  </li>
+</ul>
+
+<!---------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+
+
+<!-----------------------------------------------------------------Product Tab Content ---------------------------------------------------------------------->
+
+<div class="tab-content" id="myTabContent">
+
+
+<!-------------------------------Product Tab------------------------------------------------------------------------>
+
+  <div class="tab-pane fade show active" id="Product" role="tabpanel" aria-labelledby="home-tab">
+
+  	<table class="table table-striped bg-dark">
+
+  		<tr><td><strong>Product Images</strong></td>
+  			<td><a href="#exampleModalCenter" data-toggle="modal" data-target="#exampleModalCenter">
+  View Product Images here 
+</a></td></tr>
+
+<!-- Modal -->
+<div class="modal " id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Product Images</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+      	<div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval = "false">
+  <div class="carousel-inner" >
+  	<div class="carousel-item active" >
+      <img ng-src={{modal_photos[0]}} class="d-block w-100" alt="...">
+    </div>
+
+    <div class="carousel-item " ng-repeat = "i in range">
+      <img ng-src={{modal_photos[i]}} class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next" >
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+       
+
+
+
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+       
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+  			
+  		<tr ng-show = "productdata.Item.Subtitle!=undefined">
+  			<td ><strong>Subtitle</strong></td>
+  			<td >{{productdata.Item.Subtitle}}</td>
+  		</tr>
+
+  		<tr ng-show = "productdata.Item.ConvertedCurrentPrice.Value!='undefined'">
+  			<td ><strong>Price</strong></td>
+  			<td >${{productdata.Item.ConvertedCurrentPrice.Value}}</td>
+
+  		</tr>
+
+  		<tr ng-show = "productdata.Item.Location!='undefined'">
+  			<td ><strong>Location</strong></td>
+  			<td >{{productdata.Item.Location}}</td>
+
+  		</tr>
+
+  		<tr ng-show = "productdata.Item.ReturnPolicy!='undefined'">
+  			<td><strong>Return Policy(U.S)</strong></td>
+  			<td>{{productdata.Item.ReturnPolicy.ReturnsAccepted}} <span ng-show = "productdata.Item.ReturnPolicy.ReturnsWithin!= undefined"> within {{productdata.Item.ReturnPolicy.ReturnsWithin}}</span></td>
+  			
+
+  		</tr>
+
+
+
+  		
+
+  		<tr ng-repeat="data in productdata.Item.ItemSpecifics.NameValueList">
+
+
+  			<td><strong>{{data.Name}}</strong></td>
+  			<td>{{data.Value[0]}}</td>
+
+  			
+  		</tr>
+
+  		
+
+
+
+  	</table>
+  	
+
+  </div>
+
+
+
+<!------------------------------------------------------------------------------------------------------->
+
+
+<!-------------------------------Photos Tab------------------------------------------------------------------------>
+
+
+  <div class="tab-pane fade" id="Photos" role="tabpanel" aria-labelledby="-tab">
+
+  	<div class=" justify-content-center mt-3" ng-if="photoslist.length!=0">
+  	
+  		
+
+  			<div class="row">
+  			
+  			<div class="col-md-4">
+  				
+  				<a href = {{x}} target="_blank"><img class="card-img" ng-src = {{photoslist[0]}} style="border: solid black;"></a>
+  				<a href = {{x}} target="_blank"><img class="card-img" ng-src = {{photoslist[3]}} style="border: solid black;"></a>
+  			</div>
+
+  			<div class="col-md-4">
+  				
+  				<a href = {{x}} target="_blank"><img class="card-img" ng-src = {{photoslist[1]}} style="border: solid black;"></a>
+  				<a href = {{x}} target="_blank"><img class="card-img" ng-src = {{photoslist[4]}} style="border: solid black;"></a>
+  				<a href = {{x}} target="_blank"><img class="card-img" ng-src = {{photoslist[6]}} style="border: solid black;"></a>
+  			</div>
+  			<div class="col-md-4">
+  				
+  				<a href = {{x}} target="_blank"><img class="card-img" ng-src = {{photoslist[2]}} style="border: solid black;"></a>
+  				<a href = {{x}} target="_blank"><img class="card-img" ng-src = {{photoslist[5]}} style="border: solid black;"></a>
+  				<a href = {{x}} target="_blank"><img class="card-img" ng-src = {{photoslist[7]}} style="border: solid black;"></a>
+  			</div>
+
+  		
+
+  		</div>
+
+
+  		<div class="container alert alert-warning" ng-if = "photoslist.length==0" >
+
+	No Records . 
+	
+
+</div>
+
+
+
+
+  	</div>
+  	
+
+
+
+
+  </div>
+
+<!------------------------------------------------------------------------------------------------------->
+
+<!----------------------------------------Shipping Tab--------------------------------------------------------------->
+
+  <div class="tab-pane fade" id="Shipping" role="tabpanel" aria-labelledby="contact-tab">
+
+
+  		<table class="table table-striped bg-dark">
+
+  			<tr ng-show = "product_table_data.shippingServiceCost[0].__value__ != undefined">
+
+  				<td><strong>Shipping Cost</strong></td>
+
+  				<td>${{product_table_data.shippingServiceCost[0].__value__}}</td>
+
+  				
+  			</tr>
+  			
+  			<tr ng-show = "product_table_data.shipToLocations[0] != undefined">
+
+  				<td><strong>Shipping Locations</strong></td>
+
+  				<td >{{product_table_data.shipToLocations[0]}}</td>
+
+  				
+  			</tr>
+
+  			<tr ng-show = "product_table_data.handlingTime != undefined">
+
+  				<td><strong>Handling Time </strong></td>
+
+  				<td >${{product_table_data.handlingTime[0]+ " " + daysappend}}</td>
+
+  				
+  			</tr>
+
+
+
+
+
+  			<tr ng-show = "product_table_data.expeditedShipping[0] != undefined">
+
+  				<td><strong>Expedited Shipping </strong></td>
+
+  				<td  ng-if = "product_table_data.expeditedShipping[0] = true"><i class="material-icons md-green">check</i></td>
+  				<td  ng-if = "product_table_data.expeditedShipping[0] = false"><i class="material-icons md-red">close</i></td>
+
+
+  				
+  			</tr>
+
+  			<tr ng-show = "product_table_data.oneDayShippingAvailable[0] != undefined">
+
+  				<td><strong>One Day Shipping </strong></td>
+
+  				<td  ng-if = "product_table_data.oneDayShippingAvailable[0] = true"><i class="material-icons md-green">check</i></td>
+  				<td  ng-if = "product_table_data.oneDayShippingAvailable[0] = false"><i class="material-icons md-red">close</i></td>
+
+  				
+  			</tr>
+
+  			<tr ng-show = "product_table_data.returnsAccepted[0] != undefined">
+
+  				<td><strong>Returns Accepted </strong></td>
+
+  				<td  ng-if = "product_table_data.returnsAccepted[0] = true"><i class="material-icons md-green">check</i></td>
+  				<td  ng-if = "product_table_data.returnsAccepted[0] = false"><i class="material-icons md-red">close</i></td>
+
+  				
+  			</tr>
+
+
+
+
+  	
+  		</table>
+
+
+
+ </div>
+
+
+
+ <!----------------------------------------------------------------------------------------------------------------->
+
+ <!----------------------------------------------Seller Tab--------------------------------------------------------->
+
+  <div class="tab-pane bg-dark" id="Seller" role="tabpanel" aria-labelledby="contact-tab">
+
+  	<table class="table table-hover table-striped">
+
+  		<tr ng-if = "SellerInfo.sellerUserName[0]!=undefined">
+  			<td></td>
+  			<td >{{SellerInfo.sellerUserName[0]|uppercase}}</td>
+
+  		</tr>
+
+  		<tr><td><strong>Popularity</strong></td>
+  			<td><div class="progress-wrapper">
+    <div
+        round-progress
+        max="100"
+        current="SellerInfo.positiveFeedbackPercent[0]"
+        color="green"
+        bgcolor="#f3efb"
+        radius="20"
+        stroke="2"
+        semi="false"
+        rounded="false"
+        clockwise="true"
+        responsive="false"
+        duration="800"
+        animation="easeInOutQuart"
+        animation-delay="0"
+        offset="0"></div>
+
+    <div class="text" style="size: 1; padding-left: 3px ; padding-bottom: 4px;">{{SellerInfo.positiveFeedbackPercent[0]}}</div>
+</div></td>
+
+  		</tr>
+
+
+
+
+
+  		<tr ng-if = "SellerInfo.feedbackScore[0]!=undefined">
+  			<td><strong>Feedback Score</strong></td>
+  			<td class="justify-content-end">{{SellerInfo.feedbackScore[0]}}</td>
+
+  		</tr>
+
+  		<tr ng-if = "SellerInfo.feedbackRatingStar[0]!=undefined&&SellerInfo.feedbackScore[0]<5000">
+  			<td class="justify-content-end">Feedback Star</td>
+  			<td class="justify-content-end"><i class="material-icons" style="color: {{SellerInfo.feedbackRatingStar[0]| lowercase}}">stars</i></td>
+
+  		</tr>
+
+  		<tr ng-if = "SellerInfo.feedbackRatingStar[0]!=undefined&&SellerInfo.feedbackScore[0]>5000">
+  			<td >Feedback Star</td>
+  			<td ><i class="material-icons" style="color: {{SellerInfo.feedbackRatingStar[0]| lowercase}}">star</i></td>
+
+  		</tr>
+
+  		<tr ng-if = "SellerInfo.topRatedListing[0]!=undefined&&SellerInfo.topRatedListing[0]=true">
+  			
+  			<td><strong>Top Rated<strong></td>
+  			<td><i class="material-icons md-green">check</i></td>
+
+  		</tr>
+
+
+  		<tr ng-if = "SellerInfo.topRatedListing[0]!=undefined&&SellerInfo.topRatedListing[0]=false">
+  			
+  			<td><strong>Top Rated<strong></td>
+  			<td><i class="material-icons md-red">close</i></td>
+
+  		</tr>
+
+
+  		<tr ng-if = "storeInfo.storeName[0]!=undefined">
+  			
+  			<td><strong>Store Name<strong></td>
+  			<td>{{storeInfo.storeName[0]}}</td>
+
+  		</tr>
+  		<tr ng-if = "storeInfo.storeURL[0]!=undefined">
+  			
+  			<td><strong>Buy Product At<strong></td>
+  			<td><a href={{storeInfo.storeURL[0]}} target="_blank">Store</a></td>
+
+  		</tr>
+
+  		
+
+  		
+  		
+
+  	</table>
+
+
+  </div>
+
+  <!----------------------------------------------------------------------------Similar Tabs------------------------------->
+
+
+  <div class="tab-pane fade  container" id="Similar_prods" role="tabpanel" aria-labelledby="simprods">
+
+<div class="row" style="background-color: white; vertical-align: center; height: 60px;" ng-if="similarproductdata!=undefined">
+  	
+<div class="dropdown">
+  		
+  			<select class="dropdown" name="similar_products" ng-model= similar_products>
+
+					<option value="default" >Default</option>
+					<option value="title" ng-click = "sort_order(similar_products);">Product Name</option>
+					<option value="timeLeft.substring(1,2)" ng-click = "sort_order(similar_products);">Days Left</option>
+					<option value="buyItNowPrice.__value__" ng-click = "sort_order(similar_products);">Price</option>
+					<option value="shippingCost.__value__" ng-click = "sort_order(similar_products);">Shipping Cost</option>
+					
+					
+
+			</select>
+
+</div>
+
+  	
+<div class="dropdown">
+  		
+  			<select class="dropdown " name="similar_products" ng-model= similar_products_asc >
+
+					<option value="asc" ng-click = "rev_order(similar_products_asc);">Ascending</option>
+					<option value="desc" ng-click = "rev_order(similar_products_asc);">Descending</option>
+					
+					
+
+			</select>
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+<div ng-if="similarproductdata!=undefined">
+
+  	<table class="table gfg ">
+
+  		<tr ng-repeat = "x in similarproductdata|limitTo:limit|orderBy:sortorder" class="bg-dark">
+
+  			<td><a href="{{x.imageURL}}" target="_blank"><img ng-src="{{x.imageURL}}"></td>
+  			<td>
+  				
+  				<span style="color: #66ffcc;"><a href="{{x.viewItemURL}}">Title:{{x.title}}</a></span><br>
+  				<span style="color: #00cc66;">Price: ${{x.buyItNowPrice.__value__}}</span><br>
+  				<span style="color: #ff9900;">Shipping Cost: ${{x.shippingCost.__value__}}</span><br>
+  				Days Left: {{x.timeLeft.substring(1,2)}}<br>
+
+
+  			</td>
+  		
+
+
+  		</tr>
+
+
+  		
+
+  	</table>
+
+</div>
+
+
+
+<div class="alert alert-warning" ng-if="similarproductdata == undefined">No Records </div>
+
+<div>
+
+
+<center><span   ng-if="similarproductdata.length> 5 && similarproductdata.length !=limit">
+<button class="btn btn-dark" ng-click="showMore()">Show more</button>
+</span>
+<span   ng-if="similarproductdata.length == limit">
+<button class="btn btn-dark" ng-click="showLess()">Show less</button>
+</span></center>
+<br>
+<br>
+
+</div>
+
+  </div>
+
+
+
+ <!------------------------------------------------------------------------------------------------------------------------>
+
+
+</div>
+	
+<!---------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+</div>
+
+
+<!------------------------------------------------------------------------------------------------------------------------------------------------------------>
+
+
+<!-------------------------------------------------------------------WishList Tab----------------------------------------------------------------------------->
+
+
+<div class="container " ng-hide = "!show_wishlist">
+
+
+	<div  ng-show = "WishLength != 0">
+	
+<table class="table table-striped table-hover bg-dark">
+
+
+	<tr>
+	
+
+ <th scope="col">#</th>
+      <th scope="col">Image</th>
+      <th scope="col">Title</th>
+      <th scope="col">Price</th>
+      <th scope="col">Shipping</th>
+      <th scope="col">Seller</th>
+      <th scope="col">Favorite</th>
+
+
+   
+
+</tr>
+	
+<tr ng-repeat = "x in wishItems">
+
+<td>{{$index+1}}</td>
+<td width="150px" ng-if="x.galleryURL[0]!=undefined"><a href={{x.galleryURL[0]}} target="_blank"><img ng-src="{{x.galleryURL[0]}}" width="100%"></a></td>
+
+	<td ng-if="x.galleryURL[0]==undefined">N/A</td>
+	
+	<td ng-if="x.title[0]!=undefined"><a ng-href="#" ng-click="productDetailsTab(x);" data-original-title="{{x.title[0]}}" data-toggle="tooltip" data-placement="bottom" style="white-space: nowrap;"> {{ editTitle(x.title[0]) }}</a></td>
+
+	<td ng-if="x.title[0]==undefined"></td>
+
+
+	<td ng-if="x.sellingStatus[0].currentPrice[0].__value__!=undefined">${{x.sellingStatus[0].currentPrice[0].__value__}}</td>
+	<td ng-if="x.sellingStatus[0].currentPrice[0].__value__==undefined">N/A</td>
+
+	<td ng-if="x.shippingInfo[0].shippingServiceCost[0].__value__ == 0.0 && x.shippingInfo[0].shippingServiceCost[0].__value__ != undefined">Free Shipping</td>
+	<td ng-if="x.shippingInfo[0].shippingServiceCost[0].__value__ != 0.0 && x.shippingInfo[0].shippingServiceCost[0].__value__ != undefined">${{x.shippingInfo[0].shippingServiceCost[0].__value__}}</td>
+	<td ng-if="x.shippingInfo[0].shippingServiceCost[0].__value__ == undefined ">N/A</td>
+
+	<td ng-if="x.sellerInfo[0].sellerUserName[0]!= undefined">{{x.sellerInfo[0].sellerUserName[0] | uppercase}}</td>
+	<td ng-if="x.sellerInfo[0].sellerUserName[0]== undefined">N/A</td>
+
+
+	<td ng-if = "!checked_cart(x.itemId[0])">
+
+		<button class="btn btn-light" ng-click = "set_shop_cart(x);"><i class="material-icons">
+				add_shopping_cart
+						</i></button>
+
+					</td>
+
+
+
+	<td ng-if = "checked_cart(x.itemId[0])">
+
+		<button class="btn btn-light" ng-click = "set_shop_cart(x);"><i class="material-icons yellow">
+				remove_shopping_cart
+						</i></button>
+
+					</td>
+
+
+
+</tr>
+
+
+</table>
+
+</div>
+
+
+
+
+
+
+
+<!--------------------------------------------------------------------------- No records found bar ---------------------------------------------------->
+
+<div class="container alert alert-warning" ng-show = "WishLength == 0" >
+
+	No Records . 
+	
+
+</div>
+
+</div>
+
+
+<!------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+
+</html>
